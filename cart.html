@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+        height: 25vh;
+        width: 50%;
+        margin: 50px;
+      }
+      #parent{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
+            margin: 20px 20px;
+        }
+      #parent>div{
+            border: 1px solid white;
+            border-radius: 5px;
+            box-shadow: 1px 1px 1px 1px black;
+            color: black;
+            padding: 10px;
+            height: 80vh;
+        }
+        img:hover{
+            transform: scale(0.9);
+        }
+        #parent>div>button{
+          background-color: rgba(210, 242, 171, 0.959);
+          height: 50px;
+          width: 100px;
+        }
+        #parent>div>button:hover{
+          background-color: rgb(133, 228, 16);
+        }
+    </style>
+</head>
+<body>
+    <center> <h1>Your Cart Items are</h1></center>
+    <div id="parent">
+    </div>
+    <script>
+        let getfsdata=JSON.parse(localStorage.getItem("details"))
+        console.log(getfsdata);
+        newgetfsdata=getfsdata.map((val)=>{
+            console.log(val);
+    parent=document.getElementById("parent")        
+    var child=document.createElement("div");
+    var childa=document.createElement("div");
+    var childb=document.createElement("div");
+    var childc=document.createElement("div");
+    var childd=document.createElement("div");
+    var img=document.createElement("img");
+    var btn=document.createElement("button")
+    btn.innerText='remove'
+
+    btn.addEventListener("click",function(){
+        child.remove()
+        alert(" Item is removed from cart")
+
+    })
+     
+    img.src=val.image
+     
+    childa.innerText=val.id;
+    childb.innerText=val.title;
+    childc.innerText=val.category;
+    childd.innerText=val.price;
+    img.innerText=val.image;
+
+    child.append(childa,childb,childc,childd,img,btn)
+    parent.append(child)
+
+
+
+
+
+
+
+        })
+        
+    </script>
+   <center><a href="index.html">Go to shopping page</a></center>
+</body>
+</html>
